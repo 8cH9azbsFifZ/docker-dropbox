@@ -1,5 +1,8 @@
 # Dropbox in Docker
 
+Update: using debian base image.
+    docker run asdlfkj31h/dropbox
+
 [![Docker Pulls](https://img.shields.io/docker/pulls/janeczku/dropbox.svg?maxAge=2592000)][hub]
 [![License](https://img.shields.io/github/license/janeczku/docker-alpine-kubernetes.svg?maxAge=2592000)]()
 
