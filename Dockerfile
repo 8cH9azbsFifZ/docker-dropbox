@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian
 MAINTAINER Gerolf Ziegenhain "gerolf.ziegenhain@gmail.com"
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -6,6 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 RUN echo nameserver 1.1.1.1 > /etc/resolv.conf
 RUN apt-get -y install gnupg2
+RUN apt-get -y install libatomic1
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
 #RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
 RUN echo 'deb http://linux.dropbox.com/debian buster main' > /etc/apt/sources.list.d/dropbox.list \
