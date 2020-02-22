@@ -58,3 +58,5 @@ WORKDIR /dbox/Dropbox
 EXPOSE 17500
 VOLUME ["/dbox/.dropbox", "/dbox/Dropbox"]
 ENTRYPOINT ["/root/run"]
+
+# TBD: Health check via: dropbox running
