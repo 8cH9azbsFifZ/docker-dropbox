@@ -70,6 +70,9 @@ Run Dropbox with a custom group id (matching the group of the mounted files)
 Default: `False`  
 Set this to `True` to skip updating to the latest Dropbox version on container start
 
+## Large directories?
+On the host machine do:
+`echo fs.inotify.max_user_watches=100000 | sudo tee -a /etc/sysctl.conf; sudo sysctl -p`
 
 ## Exposed volumes
 

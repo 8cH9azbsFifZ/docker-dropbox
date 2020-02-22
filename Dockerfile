@@ -50,6 +50,10 @@ RUN mkdir -p /opt/dropbox \
 COPY run /root/
 COPY dropbox /usr/bin/dropbox
 
+# Fix for large amount of files
+# cf. https://superuser.com/questions/1221215/dropbox-unable-to-monitor-dropbox-folder
+RUN echo fs.inotify.max_user_watches=100000 | tee -a /etc/sysctl.conf
+
 WORKDIR /dbox/Dropbox
 EXPOSE 17500
 VOLUME ["/dbox/.dropbox", "/dbox/Dropbox"]

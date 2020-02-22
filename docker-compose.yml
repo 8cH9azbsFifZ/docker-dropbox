@@ -1,0 +1,14 @@
+version: '3'
+services:
+ dropbox:
+  build: ./
+  container_name: dropbox
+  volumes:
+   - /mnt/dropbox:/dbox/Dropbox
+   - accountconfig:/dbox/.dropbox
+  network_mode: "host"
+volumes:
+ accountconfig:
+#docker run -d --restart=always --name=dropbox janeczku/dropbox
+#docker run -d --restart=always --name=dropbox \
+
