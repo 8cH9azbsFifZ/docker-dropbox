@@ -9,6 +9,11 @@ RUN apt-get -y install gnupg2
 RUN apt-get -y install libatomic1
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
 #RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
+
+# Fix according to https://www.dropboxforum.com/t5/Dropbox-installs-integrations/Headless-install-on-Debian-libglapi-so-0-cannot-open-shared/td-p/396457
+RUN apt-get -y install libc6 libglapi-mesa libxdamage1 libxfixes3 libxcb-glx0 libxcb-dri2-0 libxcb-dri3-0 libxcb-present0 libxcb-sync1 libxshmfence1 libxxf86vm1
+
+
 RUN echo 'deb http://linux.dropbox.com/debian buster main' > /etc/apt/sources.list.d/dropbox.list \
 	&& apt-get -qqy update 
 # Note 'ca-certificates' dependency is required for 'dropbox start -i' to succeed
@@ -52,7 +57,9 @@ COPY dropbox /usr/bin/dropbox
 
 # Fix for large amount of files
 # cf. https://superuser.com/questions/1221215/dropbox-unable-to-monitor-dropbox-folder
-RUN echo fs.inotify.max_user_watches=100000 | tee -a /etc/sysctl.conf
+#RUN echo fs.inotify.max_user_watches=100000 | tee -a /etc/sysctl.conf
+
+#USER 1000
 
 WORKDIR /dbox/Dropbox
 EXPOSE 17500
