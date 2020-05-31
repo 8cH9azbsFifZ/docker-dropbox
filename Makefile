@@ -1,4 +1,4 @@
-VER=0.6
+VER=0.7
 build:
 	docker build . -t dropbox -t asdlfkj31h/dropbox:${VER} -t asdlfkj31h/dropbox:latest
 
